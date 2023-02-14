@@ -2,6 +2,7 @@ const fs=require('fs');
 const http=require('http');
 const { title } = require('process');
 const url=require('url')
+const replaceTemplate=require('./module/ReplaceTemp')
 // fs.readFile('./txt/i.txt','utf-8',(err,data)=>{
 
 //    console.log(data+"fff")
@@ -15,21 +16,11 @@ const url=require('url')
 //     })
 //    })
 // })
-const replaceTemplate=(temp,product)=>{
-   let output=temp.replace(/{%T%}/g,product.features[0])
-   output=output.replace(/{%DIS%}/g,product.detail)
-   output=output.replace(/{%N%}/g,product.carName)
-   output=output.replace(/{%P%}/g,product.carPrice)
-   output=output.replace(/{%S%}/g,product.includedInThePrice[0])
-   output=output.replace(/{%PHOTO%}/g,product. images[1])
-   output=output.replace(/{%ID%}/g,product.id)
-        //    if(!product.status) output.replace(/{%STATUS%}/g,product.error)
 
-  return output;
-
-}
 const cardtemp=fs.readFileSync(`${__dirname}/template/cardtemp.html`,'utf-8')
+const producttemp=fs.readFileSync(`${__dirname}/template/producttemp.html`,'utf-8')
 const template=fs.readFileSync(`${__dirname}/template/index.html`,'utf-8')
+
 // const data=fs.readFileSync(`${__dirname}/json/Data.json`,'utf-8');
 const data=fs.readFileSync(`${__dirname}/json/4f7bf80f-e4c8-44c5-9be2-afc649a5af96.json`,'utf-8');
 
@@ -51,11 +42,12 @@ const server=http.createServer((req,res)=>{
          res.end(output)
        console.log(query)
     }else if(pathname==='/product'){
-        const product=dataObi[query.id];
+       
         res.writeHead(200,{
             'content-type':'text/html'
         })
-        const output=replaceTemplate(cardtemp,product)
+        const product=dataObi[query.id];
+        const output=replaceTemplate(producttemp,product)
         res.end(output)
     }
     else if(pathname==="/api"){
