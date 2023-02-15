@@ -1,7 +1,7 @@
 [
     {
         "id":0,
-        "photo":"localhost://photo_2023-01-20 22.49.02.jpeg",
+        "photo":"localhost:4000//photo_2023-01-20 22.49.02.jpeg",
         "dicription":"Update the config object with the following in your webpack config client.js file in order to configure Webpack to bundle and hot-load React code during development",
         "name":"natnael",
         "price":34.9,

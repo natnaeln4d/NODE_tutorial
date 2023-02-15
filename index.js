@@ -2,6 +2,7 @@ const fs=require('fs');
 const http=require('http');
 const { title } = require('process');
 const url=require('url')
+const slugify=require('slugify');
 const replaceTemplate=require('./module/ReplaceTemp')
 // fs.readFile('./txt/i.txt','utf-8',(err,data)=>{
 
@@ -25,7 +26,8 @@ const template=fs.readFileSync(`${__dirname}/template/index.html`,'utf-8')
 const data=fs.readFileSync(`${__dirname}/json/4f7bf80f-e4c8-44c5-9be2-afc649a5af96.json`,'utf-8');
 
 const dataObi=JSON.parse(data);
-
+const slug=dataObi.map(el=>slugify(el.carName,{lower:true}))
+console.log(slug)
 const server=http.createServer((req,res)=>{
     const {query,pathname}=url.parse(req.url,true);
     

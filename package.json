@@ -1,22 +1,28 @@
 {
   "dependencies": {
     "express": "^4.18.2",
-    "node": "^19.6.0"
+    "node": "^19.6.0",
+    "slugify": "^1.6.5"
   },
-  "name": "express",
+  "name": "node-farm",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-   
   },
   "author": "Natnael Getachew",
   "license": "ISC",
-  "description": "",
+  "description": "learning",
   "devDependencies": {
     "nodemon": "^2.0.20"
-  }
-
-
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natnaeln4d/NODE_tutorial.git"
+  },
+  "bugs": {
+    "url": "https://github.com/natnaeln4d/NODE_tutorial/issues"
+  },
+  "homepage": "https://github.com/natnaeln4d/NODE_tutorial#readme"
 }
