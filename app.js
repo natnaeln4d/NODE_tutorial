@@ -7,7 +7,7 @@ const UserRouter=require('./routes/UserRoute')
 const dotenv=require('dotenv')
 dotenv.config({path:'./config.env'})
 const app=express()
-console.log(process.env)
+
 if(process.env.NODE_ENV==='developement')
 {
   app.use(morgan('dev'))
