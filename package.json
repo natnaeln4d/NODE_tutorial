@@ -10,7 +10,8 @@
     "postcss-cli": "^10.1.0",
     "slugify": "^1.6.5",
     "superagent": "^8.0.9",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "validator": "^13.9.0"
   },
   "name": "node-farm",
   "version": "1.0.0",

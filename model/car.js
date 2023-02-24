@@ -12,10 +12,36 @@ const carsSchema=new mongoose.Schema({
         type:Number,
         required:[true,'car price is required']
 },
-carImage:{
-  type:String
+image:[String],
+features:[String],
+details:{
+    type:String,
+    required:[true,'car detail is requires'],
+    trim:true
 },
-})
+createdAt:{
+    type:Date,
+    default:Date.now(),
+    select:false
+}
+,
+startDates:[Date],
+ratingAverage:{
+    type:Number,
+},
+discountPrice:{
+    type:Number,
+    validate:{
+        validator:function(val){
+            return val<this.carPrice
+        },
 
+    message:'discount ({VALUE}) must be less actual price'
+    }
+}
+})
+carsSchema.pre('save',function(){
+    console.log(this)
+})
 const car=mongoose.model('car',carsSchema)
 module.exports=car;
