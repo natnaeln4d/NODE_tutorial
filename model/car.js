@@ -40,8 +40,8 @@ discountPrice:{
     }
 }
 })
-carsSchema.pre('save',function(){
-    console.log(this)
-})
+// carsSchema.pre('save',function(){
+//     console.log(this)
+// })
 const car=mongoose.model('car',carsSchema)
 module.exports=car;

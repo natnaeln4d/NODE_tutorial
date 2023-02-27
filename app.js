@@ -26,4 +26,10 @@ app.use((req,res,next)=>{
 // app.delete('/cars/:id',deleteCar)
 app.use('/cars',CarsRouter)
 app.use('/users',UserRouter)
+app.all('*',(req,res,next)=>{
+  res.status(404).json({
+    status:'fail',
+    message:`${req.originalUrl} can't find the resource`
+  })
+})
 module.exports=app;

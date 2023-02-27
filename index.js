@@ -28,56 +28,56 @@ const template=fs.readFileSync(`${__dirname}/template/index.html`,'utf-8')
 const data=fs.readFileSync(`${__dirname}/json/4f7bf80f-e4c8-44c5-9be2-afc649a5af96.json`,'utf-8');
 
 const dataObi=JSON.parse(data);
-const slug=dataObi.map(el=>slugify(el.carName,{lower:true}))
-console.log(slug)
-// const server=http.createServer((req,res)=>{
-//     const {query,pathname}=url.parse(req.url,true);
+// const slug=dataObi.map(el=>slugify(el.carName,{lower:true}))
+// console.log(slug)
+const server=http.createServer((req,res)=>{
+    const {query,pathname}=url.parse(req.url,true);
     
-//     if(pathname==='/'||pathname==='/overview'){
-//         res.writeHead(200,{
-//             'content-type':'text/html'
-//         })
+    if(pathname==='/'||pathname==='/overview'){
+        res.writeHead(200,{
+            'content-type':'text/html'
+        })
   
-//         const cardhtml=dataObi.map(el=>replaceTemplate(cardtemp,el)).join('')
-//         // console.log(dataObi)
-//         const output=template.replace('{%PROUCT_CARD%}',cardhtml)
+        const cardhtml=dataObi.map(el=>replaceTemplate(cardtemp,el)).join('')
+        // console.log(dataObi)
+        const output=template.replace('{%PROUCT_CARD%}',cardhtml)
        
-//         console.log(query)
-//          res.end(output)
-//        console.log(query)
-//     }else if(pathname==='/product'){
+        console.log(query)
+         res.end(output)
+       console.log(query)
+    }else if(pathname==='/product'){
        
-//         res.writeHead(200,{
-//             'content-type':'text/html'
-//         })
-//         const product=dataObi[query.id];
-//         const output=replaceTemplate(producttemp,product)
-//         res.end(output)
-//     }
-//     else if(pathname==="/api"){
-//         // req.end('API')
-//         // fs.readFile('./json/Data.json','utf-8',(err,data)=>{
-//         //     res.writeHead(200,{
-//         //         'content-type':'application/json'
-//         //     })
-//         //     res.end(data)
-//         // })
+        res.writeHead(200,{
+            'content-type':'text/html'
+        })
+        const product=data;
+        const output=replaceTemplate(producttemp,product)
+        res.end(output)
+    }
+    else if(pathname==="/api"){
+        // req.end('API')
+        // fs.readFile('./json/Data.json','utf-8',(err,data)=>{
+        //     res.writeHead(200,{
+        //         'content-type':'application/json'
+        //     })
+        //     res.end(data)
+        // })
        
-//     }
-//     else{
+    }
+    else{
        
-//         res.writeHead(404,{
-//             'content-type':'text/html',
-//             'my-own-header':'my-own-header'
-//         })
-//          res.end("<h1>page not found</h1>")
-//          console.log(req.url)
-//     }
-// })
+        res.writeHead(404,{
+            'content-type':'text/html',
+            'my-own-header':'my-own-header'
+        })
+         res.end("<h1>page not found</h1>")
+         console.log(req.url)
+    }
+})
 
-// server.listen(4000,'127.0.0.1',()=>{
-//     console.log('server is running on', 4000)
-// })
+server.listen(4000,'127.0.0.1',()=>{
+    console.log('server is running on', 4000)
+})
 
 // const txtoutput=`the world is cool...${Date.now()}`
 // fs.writeFileSync('outtxt.txt',txtoutput,(err)=>{

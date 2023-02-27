@@ -90,8 +90,8 @@ exports.getCar=async(req,res)=>{
   excludeFields.forEach(el=> delete  queryObj[el])
   let queryStr=JSON.stringify(queryObj)
   queryStr=queryStr.replace('/\b(gte|gt|lte|lt)\b/g',match=> `$${match}`)
-  console.log(req.query,queryObj)
-  console.log(JSON.parse(queryStr))
+  // console.log(req.query.queryObj)
+  // console.log(JSON.parse(queryStr))
   const query=car.find(JSON.parse(queryStr))
   try{
 

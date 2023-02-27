@@ -17,9 +17,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start:dev": "nodemon Server.js",
+    "start": "nodemon Server.js",
     "start:prod": "NODE_ENV=product Server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "debug":"ndb Server.js"
   },
   "author": "Natnael Getachew",
   "license": "ISC",
