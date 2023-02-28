@@ -1,8 +1,10 @@
 {
   "dependencies": {
     "autoprefixer": "^10.4.13",
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.9.2",
     "morgan": "^1.10.0",
     "node": "^19.6.0",
@@ -11,7 +13,8 @@
     "slugify": "^1.6.5",
     "superagent": "^8.0.9",
     "tailwindcss": "^3.2.7",
-    "validator": "^13.9.0"
+    "validator": "^13.9.0",
+    "valitor": "^0.0.1"
   },
   "name": "node-farm",
   "version": "1.0.0",
@@ -20,7 +23,7 @@
     "start": "nodemon Server.js",
     "start:prod": "NODE_ENV=product Server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "debug":"ndb Server.js"
+    "debug": "ndb Server.js"
   },
   "author": "Natnael Getachew",
   "license": "ISC",
