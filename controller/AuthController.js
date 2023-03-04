@@ -1,3 +1,4 @@
+const {promisify}=require('util')
 const User=require('./../model/user');
 const jwt=require('jsonwebtoken')
 exports.signup=async(req,res,next)=>{
@@ -52,8 +53,9 @@ exports.login=async(req,res,next)=>{
     });
   }
   const user=await User.findOne({email:email}).select('+password');
+  const pass=await user.comparePassword (password,user.password) 
  
-     if(!await user.comparePassword (password,user.password) || !user){
+     if(!pass||!user){
       res.status(404).json({
         status:'fail',
         message:'password not match & user not found'
@@ -63,4 +65,22 @@ exports.login=async(req,res,next)=>{
       statusbar:'success',
       token:token,
      })
+}
+exports.protected=async(req,res,next)=>{
+let token;
+if(req.headers.authorization&&req.headers.authorization.startsWith('Bearer')){
+  token=req.headers.authorization.split(' ')[1]
+}
+console.log(token)
+if(!token){
+  return next(res.status(401).json({
+    status:'fail',
+    message:'you are not authorized please login'
+  }))
+}
+
+const decode=await promisify(jwt.verify)(token,process.env.JWT_SECRET)
+console.log(decode)
+
+  next();
 }

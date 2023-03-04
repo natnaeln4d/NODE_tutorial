@@ -47,11 +47,11 @@ userSchema.pre('save',async function(next){
      this.confrimPassword=undefined
      next()
 })
-userSchema.methods.comparePassword = async function (candidatePassword) {  
-     const comparison = await bcrypt.compare(candidatePassword, this.password)   
-    return comparison } 
-// userSchema.method.correctPassword=async function(candidatePassword,userPassword){
-//     return await bcrypt.compare(candidatePassword,userPassword)
-// }
+// userSchema.comparePassword = async function (candidatePassword) {  
+//      const comparison = await bcrypt.compare(candidatePassword, this.password)   
+//     return comparison } 
+userSchema.methods.comparePassword =async function(candidatePassword,userPassword){
+    return await bcrypt.compare(candidatePassword,userPassword)
+}
 const User=mongoose.model('User',userSchema)
 module.exports=User

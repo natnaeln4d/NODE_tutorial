@@ -80,7 +80,7 @@ exports.cheapCars=(req,res,next)=>{
   next()
 }
 exports.getCar=async(req,res)=>{
-
+  // res.sendFile(`${__dirname}/template/index.html`)
 
   //   console.log(req.params)
   // console.log(req.requestTime)
@@ -125,6 +125,7 @@ if(req.query.page){
 }
 // const features=new ApiFeatures(car.find(),req.query).filter().sort().fields().pagenate()
 const card=await query;
+
     res.status(200).json({
       status:'success',
       requestTime:req.requstTime,
@@ -143,6 +144,7 @@ const card=await query;
   }
   exports.postCar=async(req,res) => {
     try{
+      
     const newCar=await car.create(
       req.body
     
